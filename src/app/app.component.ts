@@ -8,11 +8,14 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ResumeComponent } from './components/task/resume/resume.component';
 import { TaskformComponent } from './components/task/taskform/taskform.component';
 import { TasklistComponent } from './components/task/tasklist/tasklist.component';
+import { ImgAleatoriaComponent } from './components/task/img-aleatoria/img-aleatoria.component';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, AuthComponent, SiginComponent, LoginComponent, ResumeComponent, TaskformComponent, TasklistComponent,RouterLink],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, AuthComponent, SiginComponent, LoginComponent, ResumeComponent, TaskformComponent, TasklistComponent,ImgAleatoriaComponent,RouterLink,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

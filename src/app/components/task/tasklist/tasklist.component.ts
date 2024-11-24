@@ -2,17 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { Task, TaskPriority, TaskStatus } from '../../../models/task.model';
 import { CommonModule } from '@angular/common';
 import { take } from 'rxjs';
+import { TaskResumeComponent } from '../task-resume/task-resume.component';
+import { TaskEvent } from '../../../models/taskEvent.model';
 
 @Component({
   selector: 'app-tasklist',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './tasklist.component.html',
+  imports: [CommonModule,TaskResumeComponent],
+  templateUrl:'./tasklist.component.html',
   styleUrl: './tasklist.component.css'
 })
 export class TasklistComponent implements OnInit{
   taskList:Task[] = [];
   
+modifyTask(taskEvent:TaskEvent){
+  switch(taskEvent.action){
+    case"raiseTaskPriority":this.raiseTaskPriority(taskEvent.taskId);break;
+    case"lowerTaskPriority":this.lowerTaskPriority(taskEvent.taskId);break;
+    case"changeTaskStatus":this.changeTaskStatus(taskEvent.taskId);break;
+    case"editTask":this.editTask(taskEvent.taskId);break;
+    case"deleteTask":this.deleteTask(taskEvent.taskId);break;
+  }
+}
+
   ngOnInit(): void {
     let task1:Task = new Task (1,"Tarea 1", "Descripción Tarea 1",TaskPriority.LOW,TaskStatus.PENDING,new Date("11/1/2024"),new Date("11/18/2024"),false);
     let task2:Task = new Task (2,"Tarea 2", "Descripción Tarea 2",TaskPriority.HIGH,TaskStatus.IN_PROGRESS,new Date("11/5/2024"),new Date("11/16/2024"),false);

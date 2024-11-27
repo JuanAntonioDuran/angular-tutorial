@@ -4,17 +4,18 @@ import { CommonModule } from '@angular/common';
 import { take } from 'rxjs';
 import { TaskResumeComponent } from '../task-resume/task-resume.component';
 import { TaskEvent } from '../../../models/taskEvent.model';
+import { TaskformComponent } from '../taskform/taskform.component';
 
 @Component({
   selector: 'app-tasklist',
   standalone: true,
-  imports: [CommonModule,TaskResumeComponent],
+  imports: [CommonModule,TaskResumeComponent,TaskformComponent],
   templateUrl:'./tasklist.component.html',
   styleUrl: './tasklist.component.css'
 })
 export class TasklistComponent implements OnInit{
   taskList:Task[] = [];
-  
+  taskToEdit?: Task;
 modifyTask(taskEvent:TaskEvent){
   switch(taskEvent.action){
     case"raiseTaskPriority":this.raiseTaskPriority(taskEvent.taskId);break;
@@ -52,12 +53,28 @@ modifyTask(taskEvent:TaskEvent){
     let tarea:Task = this.getTask(taskId)[0];
     tarea.changeStatus();
   }
-  editTask(taskId:number){
-   console.log(`Editing Task with identify ${taskId}`);
-  }
   deleteTask(taskId:number){
     this.taskList = this.taskList.filter((tarea:Task)=>{
       return tarea.id != taskId;
     });
   }
-}
+  
+  editTask(taskId: number): void {
+    const taskToEdit = this.taskList.find(task => task.id == taskId);
+  
+      this.taskToEdit = taskToEdit; // Asignamos la tarea a editar
+    
+  }
+
+  saveTask(newTask: Task): void {
+    if (this.taskToEdit!=null) {
+      // Editar tarea existente
+      const index = this.taskList.findIndex((task) => task.id == this.taskToEdit?.id);
+     
+        this.taskList[index] = newTask;
+      
+      this.taskToEdit = undefined; // Limpiar la tarea en edición
+    }
+    }
+
+  }

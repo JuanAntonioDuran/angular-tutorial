@@ -38,4 +38,5 @@ export class TaskResumeComponent {
     this.eventTaskModify.emit(new TaskEvent("deleteTask", taskId))
   
   }
+  
 }

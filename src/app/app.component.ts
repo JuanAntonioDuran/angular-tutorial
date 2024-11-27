@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskResumeComponent } from './components/task/task-resume/task-resume.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

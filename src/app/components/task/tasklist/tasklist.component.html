@@ -4,7 +4,7 @@
       <h3>Listado de Tareas</h3>
     </div>
     <div class="col-md-12">
-      <app-taskform (taskCreated)="saveTask($event)" [taskToEdit]="taskToEdit"></app-taskform>
+      <app-taskform (taskCreated)="createTask($event)" [taskToEdit]="taskToEdit"></app-taskform>
       <ng-container *ngFor="let task of taskList">
         <app-task-resume *ngIf="task.isDelete != true"[task]="task" (eventTaskModify)="modifyTask($event)"></app-task-resume>
       </ng-container>

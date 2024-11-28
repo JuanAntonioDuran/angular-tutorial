@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task, TaskPriority, TaskStatus } from '../../../models/task.model';
 import { CommonModule } from '@angular/common';
-import { take } from 'rxjs';
 import { TaskResumeComponent } from '../task-resume/task-resume.component';
 import { TaskEvent } from '../../../models/taskEvent.model';
 import { TaskformComponent } from '../taskform/taskform.component';
@@ -66,15 +65,18 @@ modifyTask(taskEvent:TaskEvent){
     
   }
 
-  saveTask(newTask: Task): void {
-    if (this.taskToEdit!=null) {
+  createTask(newTask: Task): void {
+    if (this.taskToEdit) {
       // Editar tarea existente
       const index = this.taskList.findIndex((task) => task.id == this.taskToEdit?.id);
-     
+      
         this.taskList[index] = newTask;
       
       this.taskToEdit = undefined; // Limpiar la tarea en edición
+    } else {
+      // Crear nueva tarea
+      this.taskList.push(newTask);
     }
-    }
+  }
 
   }

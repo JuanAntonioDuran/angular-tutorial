@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Angular-Jdurfer-CI
+name: AngularTutorial
 
 # Controls when the workflow will run
 on:
@@ -24,28 +24,22 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      
+
       - name: Setup nodejs
         uses: actions/setup-node@v4.1.0
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Angular APP
+      - name: build Angular APP
         run: npm run build:prod
-        
-      - name: Rename index.csr.html to index.html
-        run: mv dist/angular-tutorial/browser/index.csr.html dist/angular-tutorial/browser/index.html
 
+      - name: Rename index.csr.html to index.html
+        run: mv dist/AngularTutorial/browser/index.csr.html dist/AngularTutorial/browser/index.html
+        
       - name: Deploy Github pages
         uses: crazy-max/ghaction-github-pages@v4.1.0
-        with: 
-          build_dir: dist/angular-tutorial/browser
+        with:
+          build_dir: dist/AngularTutorial/browser
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        
-      
-      
-      
-    
-     

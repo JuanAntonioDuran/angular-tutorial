@@ -1,5 +1,4 @@
-import { Routes } from '@angular/router';
-import { ListComponent } from './components/list/list.component';
+import {Routes} from '@angular/router';
 import {StatsComponent} from './components/dashboard/stats/stats.component';
 import {ProfileComponent} from './components/dashboard/profile/profile.component';
 import {LoginComponent} from './pages/auth/login/login.component';

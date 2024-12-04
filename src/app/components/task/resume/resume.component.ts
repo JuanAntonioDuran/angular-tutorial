@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task, TaskPriority, TaskStatus } from '../../../models/task.models';
 import { CommonModule } from '@angular/common';
-import { TaskEvent } from '../../../models/taskevent.models';
+import { TaskEvent } from '../../../models/TaskEvent.models';
 
 @Component({
   selector: 'app-resume',

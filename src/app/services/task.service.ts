@@ -1,6 +1,6 @@
 import {Injectable, Input} from '@angular/core';
 import {Task, TaskPriority, TaskStatus} from '../models/task.models';
-import {TaskEvent} from '../models/TaskEvent.models';
+import {TaskEvent} from '../models/taskevent.models';
 
 @Injectable({
   providedIn: 'root'

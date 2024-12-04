@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Task, TaskPriority, TaskStatus} from '../../../models/task.models';
 import {CommonModule} from '@angular/common';
 import {ResumeComponent} from '../resume/resume.component';
-import {TaskEvent} from '../../../models/TaskEvent.models';
+import {TaskEvent} from '../../../models/taskevent.models';
 import {TaskformComponent} from '../taskform/taskform.component';
 import {TaskService} from '../../../services/task.service';
 

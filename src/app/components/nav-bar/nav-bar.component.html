@@ -7,19 +7,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <!-- Enlace a Inicio -->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
         </li>
+        <!-- Enlace a Tareas -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/tasks">Tareas</a>
+          <a class="nav-link" routerLink="/tasks" routerLinkActive="active">Tareas</a>
         </li>
+        <!-- Menú desplegable -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" routerLink="/dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            dashboard
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Inicio de sesion Crear Usuario y Cerrar Sesion
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/dashboard/stats">Stats</a></li>
-            <li><a class="dropdown-item" routerLink="/dashboard/profile">Profile</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngIf="!isAuthenticated">
+              <a class="dropdown-item" routerLink="/sigin" routerLinkActive="active">Sign In</a>
+            </li>
+            <li *ngIf="!isAuthenticated">
+              <a class="dropdown-item" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+            <li *ngIf="isAuthenticated">
+              <button class="btn btn-primary" type="button" (click)="onClick()">Cerrar Sesión</button>
+            </li>
           </ul>
         </li>
       </ul>

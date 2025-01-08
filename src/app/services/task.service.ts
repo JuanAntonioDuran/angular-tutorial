@@ -1,6 +1,8 @@
 import {Injectable, Input} from '@angular/core';
 import {Task, TaskPriority, TaskStatus} from '../models/task.models';
 import {TaskEvent} from '../models/taskevent.models';
+import {Database} from '@angular/fire/database';
+import {ref} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,11 @@ export class TaskService {
   ]
   task: Task = new Task(1, "Tarea 1", "Descripción Tarea 1", TaskPriority.LOW, TaskStatus.PENDING, new Date("11/1/2024"), new Date("11/18/2024"), false);
 
-  constructor() { }
+  constructor(private database: Database) { }
 
   getTasks(): Task[] {
+    const taskRef = ref(this.database,"/taskList");
+
     return this.tasklist;
   }
 

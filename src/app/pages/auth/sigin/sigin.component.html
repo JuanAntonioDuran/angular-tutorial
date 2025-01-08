@@ -1,5 +1,36 @@
 <app-nav-bar/>
 <form [formGroup]="siginForm" (ngSubmit)="onSubmit()">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      formControlName="name"
+      [ngClass]="{ 'is-invalid': siginForm.get('name')?.invalid && siginForm.get('name')?.touched }"
+    >
+    <div class="invalid-feedback" *ngIf="siginForm.get('name')?.invalid && siginForm.get('name')?.touched">
+      <small *ngIf="siginForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="surname" class="form-label">Surname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="surname"
+      formControlName="surname"
+      [ngClass]="{ 'is-invalid': siginForm.get('surname')?.invalid && siginForm.get('surname')?.touched }"
+    >
+    <div class="invalid-feedback" *ngIf="siginForm.get('surname')?.invalid && siginForm.get('surname')?.touched">
+      <small *ngIf="siginForm.get('surname')?.errors?.['required']">El apellido es obligatorio.</small>
+    </div>
+  </div>
+
+
+
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
     <input
@@ -30,6 +61,11 @@
         La contraseña debe tener al menos 6 caracteres.
       </small>
     </div>
+  </div>
+
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Es admin?</label>
   </div>
 
   <div class="mb-3 form-check">
